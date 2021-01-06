@@ -1,0 +1,19 @@
+
+ <table class="table">
+    <thead>
+        <tr>
+            <th>Instrument</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ins of instruments; let i = index">
+            <td>{{i +1}}</td><td>{{ ins.name }}</td>
+            <!-- <td>{{ i.key }}</td>
+            <td><button type="button" (click)="readData(i.key)">View</button>
+            <td><button type="button"  (click)="updateData(i.key)"> Update </button></td> -->
+            <!-- [routerLink]="['/', i.key] -->
+        </tr>
+    </tbody>
+</table>
+<!-- <p>Form Value: {{ profileForm.value | json }} </p>
+<p>Form Status: {{ profileForm.status }} </p> -->
