@@ -63,46 +63,26 @@
                     </div>
                 </div>
             </div>
-<hr>
+<br>
+<br>
+
+            <h5>Uncertainty Budget</h5> 
+
             <div formArrayName="uncertaintyBudgets">
-                <h5>Uncertainty Budget</h5> <button class="btn btn-primary" (click)="addContribution()">Add Contributiion</button>
-                <!-- <div *ngFor="let uncertaintyBudget of uncertaintyBudgets; let i=index"> -->
-                  <!-- The repeated uncertaintyBudget template -->                  
-                    <!-- <ng-container [formGroupName]="i">  
-                       <input formControlName="example" />
-                       <input formControlName="measurementModel" />
-                    </ng-container>
-                </div> -->
+                <button class="btn btn-success" type="submit" (click)="addUncertaintyBudgetTable()">Add Uncertainty table</button>
 
-                 <table class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">Number</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Value</th>
-                        <th scope="col">Divisor</th>
-                        <th scope="col">Uncertainty</th>
-                        <th scope="col">Sensitivity Coefficient</th>
-                        <th scope="col">Standard Uncertainty</th>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr 
-                      *ngFor="let uncertaintyBudget of uncertaintyBudgets; let i=index"
-                      [formGroupName]="i"
-                      >
-                        <td scope="row">{{i}}</td>
-                        <td><input class="form-control" formControlName="title" /></td>
-                        <td><input class="form-control" formControlName="errorValue" /></td>
-                        <td><input class="form-control" formControlName="divisor" /></td>
-                        <td><input class="form-control" formControlName="standardUncertainty" /></td>
-                        <td><input class="form-control" formControlName="sensitivityCoefficient" /></td>
-                        <td><input class="form-control" formControlName="stdUncertainty" /></td>
-                     </tr>
-                    </tbody>
-                </table> 
+                <div *ngFor="let unc of uncertaintyBudgets; index as i">
+                  <div [formGroupName]="i">
+                    <input 
+                    type="text"
+                    id="measurementCase"
+                    formControlName="measurementCase"
+                    class="form-control"
+                    #measurementCase>
+                  </div>
+                </div>
             </div>
+            
         </form>
     </div>
     

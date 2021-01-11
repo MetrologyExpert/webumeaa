@@ -27,19 +27,25 @@ export class InstrumentpageComponent implements OnInit {
     let description = '';
     let uncertaintyContributions = new FormArray([]);
 
+    let measurementCase = '';
+    let uncertaintyTable = new FormArray([]);
+
+
+
   
   this.instrumentProfileForm =
    new FormGroup({
         'name': new FormControl(name, Validators.required),
         'imagePath': new FormControl(imagePath, Validators.required),
         'description': new FormControl(description, Validators.required),
-        'uncertaintyBudgets': uncertaintyContributions
+        'uncertaintyBudgets': uncertaintyTable
       });
   
 
       //Uncertainty Budget Table
       this.uncertaintyBudgetTableForm = new FormGroup({
-
+        'measurementCase': new FormControl(measurementCase, Validators.required),
+        'contributions': uncertaintyContributions
       })
 
 
@@ -63,17 +69,22 @@ export class InstrumentpageComponent implements OnInit {
 
   }
 
+
   addUncertaintyBudgetTable(){
-
-  }
-
-
-  addContribution(){
-    this.uncertaintyBudgets.push(this.contributionForm);
+    this.uncertaintyBudgets.push(this.uncertaintyBudgetTableForm);
   }
 
   get uncertaintyBudgets() {
     return (<FormArray>this.instrumentProfileForm.get('uncertaintyBudgets')).controls;
+  }
+
+
+  addContribution(){
+    this.contributions.push(this.contributionForm);
+  }
+
+  get contributions() {
+    return (<FormArray>this.uncertaintyBudgetTableForm.get('contributions')).controls;
   }
 
 }
