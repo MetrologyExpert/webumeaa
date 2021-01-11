@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { InstrumentService } from '../instrument.service';
@@ -29,9 +30,6 @@ export class InstrumentpageComponent implements OnInit {
 
     let measurementCase = '';
     let uncertaintyTable = new FormArray([]);
-
-
-
   
   this.instrumentProfileForm =
    new FormGroup({
@@ -60,6 +58,7 @@ export class InstrumentpageComponent implements OnInit {
      'stdUncertainty': new FormControl('', Validators.required),
     });
 
+
   }
 
   onSubmit(){
@@ -67,6 +66,7 @@ export class InstrumentpageComponent implements OnInit {
 
   onCancel(){
 
+    
   }
 
 
@@ -80,11 +80,11 @@ export class InstrumentpageComponent implements OnInit {
 
 
   addContribution(){
-    this.contributions.push(this.contributionForm);
+    this.contributions.push(this.contributionForm)
   }
 
   get contributions() {
-    return (<FormArray>this.uncertaintyBudgetTableForm.get('contributions')).controls;
+     return (<FormArray>this.uncertaintyBudgetTableForm.get('contributions')) ;
   }
 
 }

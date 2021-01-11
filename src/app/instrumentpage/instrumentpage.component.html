@@ -1,6 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
-        <form [formGroup]="instrumentProfileForm" (ngSubmit) = "onSubmit()">
+        <form [formGroup]="instrumentProfileForm" #f="ngForm" (ngSubmit) = "onSubmit()">
+
             <!-- Buttons: Save and Cancel -->
             <div class="row">
                 <div class="col-xs-12">
@@ -65,26 +66,66 @@
             </div>
 <br>
 <br>
+            <button class="btn btn-success" type="submit" (click)="addUncertaintyBudgetTable()">Add Uncertainty table</button>
 
-            <h5>Uncertainty Budget</h5> 
 
-            <div formArrayName="uncertaintyBudgets">
-                <button class="btn btn-success" type="submit" (click)="addUncertaintyBudgetTable()">Add Uncertainty table</button>
+            <div class="form-group" formArrayName="uncertaintyBudgets">
+                <div 
+                    *ngFor="let unc of uncertaintyBudgets; index as i"
+                    [formGroupName]="i">    
+                    <h6>Uncertainty Budget Table</h6> 
 
-                <div *ngFor="let unc of uncertaintyBudgets; index as i">
-                  <div [formGroupName]="i">
+                      <label for="measurementCase">Measurement Case {{i+1}}</label> 
                     <input 
                     type="text"
                     id="measurementCase"
                     formControlName="measurementCase"
                     class="form-control"
                     #measurementCase>
+                 <br>
+                 <br>
+                 <br>
+                 <button class="btn btn-success" (click)="addContribution()">Add Contributions</button>
+                 <div class="form-group" formArrayName="contributions">
+
+                  <table class="table table-striped" 
+                  >
+                    <thead>
+                      <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Estimate</th>
+                        <th scope="col">Divisor</th>
+                        <th scope="col">Std.Unc</th>
+                        <th scope="col">SC</th>
+                        <th scope="col">Std.Unc</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                      *ngFor="let con of contributions; index as j"
+                      [formGroupName]="j">
+
+                        <!-- <td>{{conIndex}}</td> -->
+                        <td><input class="form-control" formControlName="title" /></td>
+                        <td><input class="form-control" formControlName="errorValue" /></td>
+                        <td><input class="form-control" formControlName="divisor" /></td>
+                        <td><input class="form-control" formControlName="standardUncertainty" /></td>
+                        <td><input class="form-control" formControlName="sensitivityCoefficient" /></td>
+                        <td><input class="form-control" formControlName="stdUncertainty" /></td>
+                       </tr> 
+                    </tbody>
+                  </table>
                   </div>
+
+                  <br>
+                  <br>
                 </div>
+             
             </div>
-            
         </form>
     </div>
+    <br>
+    <br>
     
 </div>
 
