@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { InstrumentService } from '../instrument.service';
 
 @Component({
@@ -10,27 +10,70 @@ import { InstrumentService } from '../instrument.service';
 export class InstrumentpageComponent implements OnInit {
 
   constructor(
+    private fb: FormBuilder,
     private instrumentService:InstrumentService
   ) { }
 
-  instrumentForm: FormGroup;
+  instrumentProfileForm: FormGroup;
+  uncertaintyBudgetTableForm: FormGroup;
+  contributionForm: FormGroup;
 
+
+  
+  
   ngOnInit(): void {
+    let name = '';
+    let imagePath = '';
+    let description = '';
+    let uncertaintyContributions = new FormArray([]);
 
-    let instrumentName = '';
-    let instrumentImagePath = '';
-    let instrumentDescription = '';
+  
+  this.instrumentProfileForm =
+   new FormGroup({
+        'name': new FormControl(name, Validators.required),
+        'imagePath': new FormControl(imagePath, Validators.required),
+        'description': new FormControl(description, Validators.required),
+        'uncertaintyBudgets': uncertaintyContributions
+      });
+  
 
-    this.instrumentForm = new FormGroup({
-      'name': new FormControl(instrumentName, Validators.required),
-      'imagePath': new FormControl(instrumentImagePath, Validators.required),
-      'description': new FormControl(instrumentDescription, Validators.required),
+      //Uncertainty Budget Table
+      this.uncertaintyBudgetTableForm = new FormGroup({
+
+      })
+
+
+
+     //Uncertainty Budget Table Form   
+    this.contributionForm = new FormGroup({
+     'title': new FormControl('', Validators.required),
+     'errorValue': new FormControl('', Validators.required),
+     'divisor': new FormControl('', Validators.required),
+     'standardUncertainty': new FormControl('', Validators.required),
+     'sensitivityCoefficient': new FormControl('', Validators.required),
+     'stdUncertainty': new FormControl('', Validators.required),
     });
+
   }
 
   onSubmit(){
-    this.instrumentService.addInstrument(this.instrumentForm.value);
   }
 
-  onCancel(){}
+  onCancel(){
+
+  }
+
+  addUncertaintyBudgetTable(){
+
+  }
+
+
+  addContribution(){
+    this.uncertaintyBudgets.push(this.contributionForm);
+  }
+
+  get uncertaintyBudgets() {
+    return (<FormArray>this.instrumentProfileForm.get('uncertaintyBudgets')).controls;
+  }
+
 }

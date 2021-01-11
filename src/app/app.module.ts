@@ -7,13 +7,15 @@ import { InstrumentlistComponent } from './instrumentlist/instrumentlist.compone
 import { InstrumentpageComponent } from './instrumentpage/instrumentpage.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InstrumentsComponent } from './instruments/instruments.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InstrumentlistComponent,
     InstrumentpageComponent,
-    InstrumentsComponent
+    InstrumentsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
