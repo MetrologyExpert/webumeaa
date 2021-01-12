@@ -23,7 +23,7 @@ export class UncertaintyBudgetComponent  {
 
 
     uncertaintyBudgetForm = new FormGroup({
-      measurementCase: new FormControl(''),
+      measurementCase: new FormControl('', Validators.required),
       contributions: new FormArray([this.rowForm])
     });
   
@@ -31,6 +31,10 @@ export class UncertaintyBudgetComponent  {
 
 
   onSubmit(){
+  }
+
+  onCancel(){
+
   }
 
   addContribution(){

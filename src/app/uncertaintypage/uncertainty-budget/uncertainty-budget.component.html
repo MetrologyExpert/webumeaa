@@ -1,6 +1,22 @@
 <p></p>
 <p></p>
-<form [formGroup]="uncertaintyBudgetForm">
+<form [formGroup]="uncertaintyBudgetForm"  #f="ngForm" (ngSubmit) = "onSubmit()" >
+
+    <div class="row">
+        <div class="col-xs-12">
+            <button type="submit" 
+            class="btn btn-success"
+            [disabled]="!uncertaintyBudgetForm.valid">
+                Save
+            </button>
+            <button type="button" class="btn btn-danger" (click)="onCancel()">
+                Cancel
+            </button>
+        </div>
+    </div>
+    <p></p>
+    <br>
+    <br>
      <h4>Uncertainty Budget</h4>
      <p></p>
      <label for="measurementCase"><h6>Measurement Case</h6></label>
@@ -11,7 +27,7 @@
     <button class="btn btn-primary" (click)="addContribution()">Add Contribution</button>
 
     <div formArrayName="contributions">
-      <div>
+      <div class="align-right" width="100">
         <table class="table table-striped">
             <thead>
               <tr>
@@ -25,7 +41,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let _ of contributions.controls; index as i"
+              <tr *ngFor="let con of contributions.controls; index as i"
               [formGroupName]="i"
               >
                 <td scope="row">{{i}}</td>
@@ -35,9 +51,34 @@
                 <td><input class="form-control" formControlName="standardUncertainty" /></td>
                 <td><input class="form-control" formControlName="sensitivityCoefficient" /></td>
                 <td><input class="form-control" formControlName="stdUncertainty" /></td>
+                <td ></td>
              </tr>
             </tbody>
         </table> 
+
+        <table class="table table-striped ">
+            <thead>
+                <tr class="align-right">
+                    <th scope="col">Total standard uncertainty</th>
+                    <th scope="col">Covariage coefficient</th>
+                    <th scope="col">Expanded Uncertainty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td ><input class="form-control" formControlName="totalUncertainty" /></td>
+                    <td ><input class="form-control" formControlName="covCoefficient" /></td>
+                    <td ><input class="form-control" formControlName="expUncertainty" /></td>
+                 </tr>
+            </tbody>
+        </table>
+
+        
+        
       </div>
     </div>
+    Form Status: {{ uncertaintyBudgetForm.status }}
+    <p></p>
+    {{ this.uncertaintyBudgetForm.value | json }}
   </form>
+
