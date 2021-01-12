@@ -1,0 +1,43 @@
+<p></p>
+<p></p>
+<form [formGroup]="uncertaintyBudgetForm">
+     <h4>Uncertainty Budget</h4>
+     <p></p>
+     <label for="measurementCase"><h6>Measurement Case</h6></label>
+     <p></p>
+     <textarea class="form-control" id="measurementCase" formControlName="measurementCase" rows="3"></textarea>
+     <p></p>
+
+    <button class="btn btn-primary" (click)="addContribution()">Add Contribution</button>
+
+    <div formArrayName="contributions">
+      <div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Row</th>
+                <th scope="col">Title</th>
+                <th scope="col">Value</th>
+                <th scope="col">Divisor</th>
+                <th scope="col">Uncertainty</th>
+                <th scope="col">Sensitivity Coefficient</th>
+                <th scope="col">Standard Uncertainty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let _ of contributions.controls; index as i"
+              [formGroupName]="i"
+              >
+                <td scope="row">{{i}}</td>
+                <td><input class="form-control" formControlName="title" /></td>
+                <td><input class="form-control" formControlName="errorValue" /></td>
+                <td><input class="form-control" formControlName="divisor" /></td> 
+                <td><input class="form-control" formControlName="standardUncertainty" /></td>
+                <td><input class="form-control" formControlName="sensitivityCoefficient" /></td>
+                <td><input class="form-control" formControlName="stdUncertainty" /></td>
+             </tr>
+            </tbody>
+        </table> 
+      </div>
+    </div>
+  </form>

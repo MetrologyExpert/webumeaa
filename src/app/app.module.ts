@@ -8,6 +8,7 @@ import { InstrumentpageComponent } from './instrumentpage/instrumentpage.compone
 import { ReactiveFormsModule } from '@angular/forms';
 import { InstrumentsComponent } from './instruments/instruments.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UncertaintyBudgetComponent } from './uncertaintypage/uncertainty-budget/uncertainty-budget.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     InstrumentlistComponent,
     InstrumentpageComponent,
     InstrumentsComponent,
-    NavbarComponent
+    NavbarComponent,
+    UncertaintyBudgetComponent
   ],
   imports: [
     BrowserModule,
