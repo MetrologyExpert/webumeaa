@@ -13,7 +13,8 @@ export class Contribution {
         divisor: number,
         standardUncertainty: number,
         sensitivityCoefficient: number,
-        stdUncertainty: number)
+        stdUncertainty:number
+        )
     
     {
         this.title = title,
@@ -21,7 +22,7 @@ export class Contribution {
         this.divisor = divisor,
         this.standardUncertainty = standardUncertainty,
         this.sensitivityCoefficient = sensitivityCoefficient,
-        this.stdUncertainty = standardUncertainty
+        this.stdUncertainty = stdUncertainty
     }
 
 }

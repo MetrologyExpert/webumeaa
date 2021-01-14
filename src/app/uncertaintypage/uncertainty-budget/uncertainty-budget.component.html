@@ -26,7 +26,7 @@
 
     <button class="btn btn-primary" (click)="addContribution()">Add Contribution</button>
 
-    <div formArrayName="contributions">
+    <ng-container formArrayName="contributions">
       <div class="align-right" width="100">
         <table class="table table-striped">
             <thead>
@@ -41,7 +41,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let con of contributions.controls; index as i"
+              <tr *ngFor="let con of contributionsControls.controls; index as i"
               [formGroupName]="i"
               >
                 <td scope="row">{{i}}</td>
@@ -56,7 +56,7 @@
             </tbody>
         </table> 
 
-        <table class="table table-striped ">
+        <!-- <table class="table table-striped ">
             <thead>
                 <tr class="align-right">
                     <th scope="col">Total standard uncertainty</th>
@@ -73,12 +73,11 @@
             </tbody>
         </table>
 
-        
+         -->
         
       </div>
-    </div>
+    </ng-container>
     Form Status: {{ uncertaintyBudgetForm.status }}
     <p></p>
     {{ this.uncertaintyBudgetForm.value | json }}
   </form>
-
