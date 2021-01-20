@@ -12,6 +12,12 @@ export class UncertaintyBudget {
         this.contributions = contributions;
     }
 
-    
+    get totalUncertainty() {
+        let sum = 0;
+        for (let c in this.contributions) { 
+          sum += (this.contributions[c].stdUncertainty);
+      }
+      return sum;
 
+    }
 }

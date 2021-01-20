@@ -1,5 +1,6 @@
 export class Contribution {
 
+    public id:number;
     public title:string;
     public errorValue: number; 
     public divisor: number; 
@@ -23,6 +24,6 @@ export class Contribution {
         this.standardUncertainty = standardUncertainty,
         this.sensitivityCoefficient = sensitivityCoefficient,
         this.stdUncertainty = stdUncertainty
-    }
+    }     
 
 }
